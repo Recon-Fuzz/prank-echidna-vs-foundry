@@ -1,5 +1,11 @@
 # StartPrank Echidna vs Foundry Bug
 
+This is a POC that shows a "code breaking" difference between `startPrank` in `foundry` and in `echidna`
+
+We demonstrate this by having a simple router, that will perform a transferFrom
+
+Due to how `startPrank` works in `echidna` the operation fails, even though we would expect it to succeed (and it does in `foundry`)
+
 Echidna Run:
 https://getrecon.xyz/shares/0c8e4898-85bb-43da-be2c-1f97ec1dcf1f
 
