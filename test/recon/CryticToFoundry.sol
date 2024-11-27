@@ -10,10 +10,13 @@ contract CryticToFoundry is Test, TargetFunctions, FoundryAsserts {
     function setUp() public {
         setup();
 
-        targetContract(address(counter));
     }
 
+    // forge test --match-test test_crytic -vv
     function test_crytic() public {
-        // TODO: add failing property tests here for debugging
+        test_theTransfer();
+        test_theTransfer_startP();
+        test_theTransferLib();
+        test_theTransferLibStartP();
     }
 }

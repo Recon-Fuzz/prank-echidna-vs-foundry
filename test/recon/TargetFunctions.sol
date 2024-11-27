@@ -10,31 +10,57 @@ abstract contract TargetFunctions is
     BaseTargetFunctions,
     Properties
 {
-    function counter_increment() public {
-        counter.increment();
-    }
+    // Check that it works as you would expect
+    function test_theTransfer() public {
+        vm.prank(borrower);
+        try router.doTheSwap(address(token), borrower, 1e18) {
 
-    function counter_setNumber1(uint256 newNumber) public {
-        // example assertion test replicating testFuzz_SetNumber
-        try counter.setNumber(newNumber) {
-            if (newNumber != 0) {
-                t(counter.number() == newNumber, "number != newNumber");
-            }
         } catch {
-            t(false, "setNumber reverts");
+            t(false, "Should work");
         }
     }
 
-    function counter_setNumber2(uint256 newNumber) public {
-        // same example assertion test as counter_setNumber1 using ghost variables
-        __before();
+    function test_theTransfer_startP() public {
+        vm.startPrank(lender);
+        try router.doTheSwap(address(token), lender, 1e18) {
 
-        counter.setNumber(newNumber);
-
-        __after();
-
-        if (newNumber != 0) {
-            t(_after.counter_number == newNumber, "number != newNumber");
+        } catch {
+            t(false, "Should work");
         }
+
+        vm.stopPrank();
+        vm.startPrank(borrower);
+        try router.doTheSwap(address(token), borrower, 1e18) {
+
+        } catch {
+            t(false, "Should work");
+        }
+        vm.stopPrank();
+    }
+
+    function test_theTransferLib() public {
+        vm.prank(borrower);
+        try router.doTheSwapWithExternalLibrary(address(token), borrower, 1e18) {
+
+        } catch {
+            t(false, "Should work");
+        }
+    }
+    function test_theTransferLibStartP() public {
+        vm.startPrank(lender);
+        try router.doTheSwapWithExternalLibrary(address(token), borrower, 1e18) {
+            
+        } catch {
+            t(false, "Should work");
+        }
+        vm.stopPrank();
+        
+        vm.startPrank(borrower);
+        try router.doTheSwapWithExternalLibrary(address(token), borrower, 1e18) {
+
+        } catch {
+            t(false, "Should work");
+        }
+        vm.stopPrank();
     }
 }

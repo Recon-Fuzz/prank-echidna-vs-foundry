@@ -7,3 +7,13 @@ balanceAddr: 0x1043561a8829300000
 balanceContract: 0x1043561a8829300000
 filterFunctions: []
 cryticArgs: ["--foundry-compile-all"]
+
+deployer: "0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38"
+
+## Rely on Foundry compilation, compile and build libraries to those addresses
+cryticArgs: ["--foundry-compile-all", "--compile-libraries=(SwapLib,0xf01)"]
+## Deploy them to these addresses
+deployContracts: [
+  ["0xf01", "SwapLib"],
+  ["0xf0c", "CryticTester"]
+]
