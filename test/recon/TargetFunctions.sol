@@ -56,6 +56,7 @@ abstract contract TargetFunctions is
         } catch {
             t(false, "Should work");
         }
+        vm.stopPrank();
     }
     function test_theTransfer_b_l() public {
         vm.startPrank(borrower);
@@ -64,6 +65,7 @@ abstract contract TargetFunctions is
         } catch {
             t(false, "Should work");
         }
+        vm.stopPrank();
     }
 
     function test_theTransfer_l_l() public {
@@ -73,6 +75,7 @@ abstract contract TargetFunctions is
         } catch {
             t(false, "Should work");
         }
+        vm.stopPrank();
     }
     function test_theTransfer_l_b() public {
         vm.startPrank(lender);
@@ -81,6 +84,7 @@ abstract contract TargetFunctions is
         } catch {
             t(false, "Should work");
         }
+        vm.stopPrank();
     }
 
     // == doTheSwapWithExternalLibrary | Start Prank == //
