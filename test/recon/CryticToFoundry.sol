@@ -14,16 +14,26 @@ contract CryticToFoundry is Test, TargetFunctions, FoundryAsserts {
 
     // forge test --match-test test_crytic -vv
     function test_crytic() public {
-        test_theTransfer();
-        test_theTransfer_startP();
-        test_theTransferLib();
-        test_theTransferLibStartP();
+        test_theTransfer_p_b_b();
+        test_theTransfer_p_b_l();
+        test_theTransfer_p_l_l();
+        test_theTransfer_p_l_b();
+
+        test_theTransfer_b_b();
+        test_theTransfer_b_l();
+        test_theTransfer_l_l();
+        test_theTransfer_l_b();
+
+
+        test_theTransferLibStartP_L_B();
+        test_theTransferLibStartP_L_L();
+        test_theTransferLibStartP_B_L();
+        test_theTransferLibStartP_B_B();
+
+        test_theTransferLib_P_B_B();
+        test_theTransferLib_P_B_L();
+        test_theTransferLib_P_L_L();
+        test_theTransferLib_P_L_B();
     }
 
-    // forge test --match-test test_test_theTransferLibStartP_0 -vv 
-    function test_test_theTransferLibStartP_0() public {
-
-        test_theTransferLibStartP();
-
-    }
 }

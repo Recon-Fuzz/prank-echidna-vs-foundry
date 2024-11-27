@@ -12,8 +12,8 @@ abstract contract Setup is BaseSetup {
     Router router;
 
 
-    address lender = address(20);
-    address borrower = address(30);
+    address lender = address(0x12123);
+    address borrower = address(0x123123123);
 
     function setup() internal virtual override {
         token = new ERC20("TOK", "token");
